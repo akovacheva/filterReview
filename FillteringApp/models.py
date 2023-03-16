@@ -27,3 +27,5 @@ class Review(models.Model):
     href = models.URLField(null=True)
     logoHref = models.URLField(null=True)
     photos = models.JSONField()
+    def __str__(self):
+        return self.reviewerName
