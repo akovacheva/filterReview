@@ -101,8 +101,8 @@
       <select id="inputState" class="form-control" name="rating">
         <option selected>Choose...</option>
 
-            {% for rating in queryset %}
-                <option value="{{ rating.rating }}">{{ rating.rating}}</option>
+            {% for rating in ratingset %}
+                <option value="{{ rating }}">{{ rating }}</option>
             {% endfor %}
 
       </select>
@@ -114,7 +114,9 @@
 {#        <option selected>Choose...</option>#}
 {##}
 {#            {% for rating in queryset %}#}
-{#                <option value="{{ rating.rating }}">{{ rating.rating }}</option>#}
+{#                {% if rating.rating == 5 %}#}
+{#                <option value="Highest rating">{{ "Highest rating" }}</option>#}
+{#                {% endif %}#}
 {#            {% endfor %}#}
 {##}
 {#      </select>#}
@@ -132,7 +134,14 @@
 {#      <label for="inputState">Prioritize by text: </label>#}
 {#      <select id="inputState" class="form-control" name="reviewText">#}
 {#        <option selected>Choose...</option>#}
-{#        <option>...</option>#}
+{##}
+{#              {% for post in queryset %}#}
+{#                  {% if post.reviewText != ""  %}#}
+{#              <option value="{{ post.pk }}">Yes</option>#}
+{#                  {% else %}#}
+{#                  <option value="{{ post.pk }}">No</option>#}
+{#                  {% endif %}#}
+{#              {% endfor %}#}
 {#      </select>#}
 {#    </div>#}
 
