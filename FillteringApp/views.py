@@ -13,19 +13,26 @@ def ReviewFilterView(request):
 
     rating_order = request.GET.get("rating_order")
 
+    date_order = request.GET.get("date_order")
+
 
     if rating_query:
         qs = qs.filter(rating__gte=rating_query)
 
-
-
     if prioritize_text_query == "Yes":
         qs = qs.filter(Q(reviewText__isnull=False) & ~Q(reviewText=''))
+        null_reviews = qs.filter(Q(reviewText__isnull=True) & Q(reviewText=''))
+        qs = qs.union(null_reviews)
 
     if rating_order == "Highest First":
         qs = qs.order_by('-rating')
     elif rating_order == "Lowest First":
         qs = qs.order_by('rating')
+
+    if date_order == "Newest First":
+        qs = qs.order_by('-reviewCreatedOnDate')
+    elif rating_order == "Oldest First":
+        qs = qs.order_by('reviewCreatedOnDate')
 
     context = {
         'queryset': qs,
