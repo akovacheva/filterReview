@@ -14,11 +14,13 @@ def ReviewFilterView(request):
     rating_order = request.GET.get("rating_order")
 
 
-    if rating_query != '' and rating_query is not None:
-        qs = qs.filter(rating=rating_query)
+    if rating_query:
+        qs = qs.filter(rating__gte=rating_query)
+
+
 
     if prioritize_text_query == "Yes":
-        qs = qs.filter(Q(reviewText__isnull=False) & ~Q(reviewText='')).order_by('-reviewText', '-rating')
+        qs = qs.filter(Q(reviewText__isnull=False) & ~Q(reviewText=''))
 
     if rating_order == "Highest First":
         qs = qs.order_by('-rating')
