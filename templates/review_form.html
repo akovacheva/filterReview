@@ -91,7 +91,7 @@
 <div class="container">
   <div class="row">
 
-  <div class="col-xs-6">
+  <div class="col">
 
 
       <form method="GET"action=".">
@@ -133,8 +133,8 @@
       <label for="Prioritizebytext">Prioritize by text:</label>
       <select class="form-control"  name="Prioritizebytext">
              <option selected>Choose...</option>
-        <option value="Yes" {% if prioritize_text_query == "Yes" %}selected{% endif %}>Yes</option>
-        <option value="No" {% if prioritize_text_query == "No" %}selected{% endif %}>No</option>
+        <option value="Yes" {% if prioritize_text_query == "Yes" %}{% endif %}>Yes</option>
+        <option value="No" {% if prioritize_text_query == "No" %}{% endif %}>No</option>
 
       </select>
 
@@ -145,7 +145,7 @@
 
   </div>
 
-      <div class="col-xs-6">
+      <div class="col">
           <ul>
               {% for review in queryset %}
                   <li>
@@ -163,7 +163,7 @@
 </div>
 </div>
 
-</div>
+</div>/
 
   </body>
 </html>
