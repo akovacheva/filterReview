@@ -97,34 +97,25 @@
       <form method="GET"action=".">
 {% csrf_token %}
 
-    <div class="form-group col-md-4 p-2">
-      <label for="inputState">Order by rating: </label>
-      <select id="inputState" class="form-control" name="rating">
+          <div class="form-group col-md-4 p-2">
+      <label for="rating_order">Order by Rating:</label>
+        <select id="rating_order" class="form-control" name="rating_order">
         <option selected>Choose...</option>
-
-            {% for rating in ratingset %}
-
-                <option value="{{ rating }}">{{ rating }}</option>
-            {% endfor %}
-
-
+        <option value="Highest First">Highest First</option>
+    <option value="Lowest First">Lowest First</option>
       </select>
     </div>
 
-{#          <div class="form-group col-md-4 p-2">#}
-{#      <label for="inputState">Minimum rating:</label>#}
-{# <select name="min_rating" id="min_rating">#}
-{#        <option value="">All ratings</option>#}
-{#        {% for rating in myrange%}#}
-{#    <option value="{{ rating }}" {% if rating == min_rating %}selected{% endif %}>{{ rating }} stars</option>#}
-{#{% endfor %}#}
-{#    </select>#}
-{#        <select id="inputState" class="form-control" name="rating">#}
-{#        <option selected>Choose...</option>#}
+{#    <div class="form-group col-md-4 p-2">#}
+{#      <label for="inputState">Minimum rating: </label>#}
+{#      <select id="inputState" class="form-control" name="rating">#}
 {##}
-{#        {% for rating in myrange%}#}
-{#        <option value="{{ rating }}" {% if rating == min_rating %}selected{% endif %}>{{ rating }} stars</option>#}
-{#        {% endfor %}#}
+{#          <option selected>Choose...</option>#}
+{#          {% for rating in ratingset %}#}
+{##}
+{#                <option value="{{ rating }}">{{ rating }}</option>#}
+{#            {% endfor %}#}
+{##}
 {##}
 {#      </select>#}
 {#    </div>#}
@@ -136,17 +127,17 @@
 {#        <option>...</option>#}
 {#      </select>#}
 {#    </div>#}
-
-          <div class="form-group col-md-4 p-2">
-      <label for="Prioritizebytext">Prioritize by text:</label>
-      <select class="form-control"  name="Prioritizebytext">
-             <option selected>Choose...</option>
-        <option value="Yes" {% if prioritize_text_query == "Yes" %}selected{% endif %}>Yes</option>
-        <option value="No" {% if prioritize_text_query == "No" %}selected{% endif %}>No</option>
-
-      </select>
-
-    </div>
+{##}
+{#          <div class="form-group col-md-4 p-2">#}
+{#      <label for="Prioritizebytext">Prioritize by text:</label>#}
+{#      <select class="form-control"  name="Prioritizebytext">#}
+{#             <option selected>Choose...</option>#}
+{#        <option value="Yes" {% if prioritize_text_query == "Yes" %}selected{% endif %}>Yes</option>#}
+{#        <option value="No" {% if prioritize_text_query == "No" %}selected{% endif %}>No</option>#}
+{##}
+{#      </select>#}
+{##}
+{#    </div>#}
 
       <button type="submit" class="btn btn-primary">Filter</button>
       </form>
